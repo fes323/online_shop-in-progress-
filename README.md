@@ -1,3 +1,1 @@
-# online_shop (in progress)
-## Магазинчик микрозелени.
-
+# django_online_shop (in progress)
