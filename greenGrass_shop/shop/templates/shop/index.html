@@ -1,0 +1,46 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="subheader">
+    <div class="container-xxl body_home">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-10">
+          <div class="home_main_div">
+            <div class="home_title">
+              <h1>Выращиваем микрозелень под заказ</h1>
+              <img src="" alt="" />
+            </div>
+            <div class="home_subtitle">
+              <h2>
+                Достаточно оформить заказ, доставка по Москве в течение 7 дней
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="home_truc_icon">
+            <img src="{% static "/img/truck-tick.svg" alt="truck_icon" %}"/>
+          </div>
+        </div>
+        <div class="home_btn">
+          <a class="home_main_button" href="{% url 'shop:main_catalog' %}">
+            <button class="home_main_button">
+            Каталог <img src="{% static "/img/catalog.svg" alt="calatog" %}"/>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+{% endblock %}
