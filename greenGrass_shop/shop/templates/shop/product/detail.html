@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "shop/base.html" %} 
+{% load static %} 
+{% block title %} 
+{% if category %} {{ category.name }} {% else %} Products {% endif %} 
+{% endblock %} 
 
-</body>
-</html>
+{% block content %}
+    <div class="container-xxl">
+    
+      {{ product.image }}
+      {{ product.name }}
+      {{ product.description }}
+      Осталось в наличии: {{ product.stock }}
+      Цена: {{ product.price }}
+      <button>Добавить в корзину</button>
+    
+    </div>
+{% endblock %}

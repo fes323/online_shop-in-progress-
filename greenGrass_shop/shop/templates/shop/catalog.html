@@ -4,52 +4,43 @@
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>GGshop | Каталог</title>
-</head>
-<body>
+
 <div class="container-xxl body_catalog">
       <div class="row">
-        <div class="category_bar text-center">
-          <ul class="category_menu_item">
+        <div class="category_bar text-center    ">
+          <ul class="category_menu_item d-flex justify-content-around">
             <li  {% if not category %}class="selected"{% endif %}>
                 <a class="category_menu_item_link" href="{% url "shop:main_catalog" %}">Все товары</a>
             </li>
-            {% for c in categories %}
-                <li {% if category.slug == c.slug %}class="selected"{% endif %}>
-                    <a class="category_menu_item_link" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+                {% for c in categories %}
+                    <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                        <a class="category_menu_item_link" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
       </div>
-    </div>
-
-    <div class="container-xxl catalog_list">
-        <div class="row text-center align-items-center">
-
-        </div>
-    </div>
-
-
- <div id="sidebar">
-        
-    </div>
-    <div id="main" class="product-list">
-        <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
-        {% for product in products %}
-            <div class="item">
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-                </a>
-                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
-                ${{ product.price }}
+</div>
+<div id="main" class="container-xxl catalog_list">
+    <div class="row text-center align-items-center">
+            <div id="main" class="container-xxl">
+                <h1 class="category_title">{% if category is not None %}
+                     {{ category.name }}
+                     {% else %}Все товары{% endif %}</h1>
+                    {% for product in products %}
+                    <div class="container-fluid d-flex justify-content-between align-items-center product_cart">
+                        
+                        <div class="col"><a href="{{ product.get_absolute_url }}">
+                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                        </a></div>
+                        <div class="col">
+                        <a class="product_name" href="{{ product.get_absolute_url }}">{{ product.name }}</a></div>
+                        <div class="col"><button class="price_button">{{ product.price }} руб. 00 коп.</button></div>
+                        
+                        <div class="col"><button class="add_product_button">Добавить</button></div>
+                    </div>
+                    {% endfor %}
             </div>
-        {% endfor %}
     </div>
-</body>
-</html>
+</div>
 {% endblock %}

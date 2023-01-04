@@ -15,20 +15,26 @@ def product_detail(request, id, slug):
         slug=slug,
         available=True,
     )
+    context = {
+        'product': product,
+    }
     return render(request,
                   'shop/product/detail.html',
-                  {'product': product})
+                  context)
 
 
 def main_catalog(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
-    if category_slug:
+    if category_slug is not None:
         category = get_list_or_404(Category, slug=category_slug)
-        products = products.filter(category__slug=category)
+        products = Product.objects.filter(category__slug=category_slug)
+    context = {
+        'category': category,
+        'categories': categories,
+        'products': products
+    }
     return render(request,
                   'shop/catalog.html',
-                  {'category': category,
-                   'categories': categories,
-                   'products': products})
+                  context)
