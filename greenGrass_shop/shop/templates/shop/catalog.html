@@ -11,18 +11,32 @@
     <title>GGshop | Каталог</title>
 </head>
 <body>
- <div id="sidebar">
-        <h3>Categories</h3>
-        <ul>
-            <li {% if not category %}class="selected"{% endif %}>
-                <a href="{% url "shop:main_catalog" %}">All</a>
+<div class="container-xxl body_catalog">
+      <div class="row">
+        <div class="category_bar text-center">
+          <ul class="category_menu_item">
+            <li  {% if not category %}class="selected"{% endif %}>
+                <a class="category_menu_item_link" href="{% url "shop:main_catalog" %}">Все товары</a>
             </li>
             {% for c in categories %}
                 <li {% if category.slug == c.slug %}class="selected"{% endif %}>
-                    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                    <a class="category_menu_item_link" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
                 </li>
             {% endfor %}
         </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-xxl catalog_list">
+        <div class="row text-center align-items-center">
+
+        </div>
+    </div>
+
+
+ <div id="sidebar">
+        
     </div>
     <div id="main" class="product-list">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
