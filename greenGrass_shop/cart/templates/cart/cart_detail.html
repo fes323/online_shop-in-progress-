@@ -47,7 +47,9 @@
         
         <p class="text-right">
             <a href="{% url "shop:main_catalog" %}" class="button light">Вернуться в каталог</a>
-            <a href="#" class="button">Обновить</a>
+            <a href="{% url "orders:order_create" %}" class="button">
+                Checkout
+            </a>
         </p>
         </div>
         </div>
