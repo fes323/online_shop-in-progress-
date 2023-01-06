@@ -263,3 +263,9 @@ li {
   font-weight: 900;
   font-size: 24px;
 }
+
+/* product cart  */
+
+.product_detail_cart {
+  padding-top: 100px;
+}

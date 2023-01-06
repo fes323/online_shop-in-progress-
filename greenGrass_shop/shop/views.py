@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from .models import Category, Product
 
 
@@ -9,14 +9,16 @@ def main_page(request):
 
 
 def product_detail(request, id, slug):
-    product = get_list_or_404(
+    product = get_object_or_404(
         Product,
         id=id,
         slug=slug,
         available=True,
     )
+
+    product = Product.objects.get(slug=slug)
     context = {
-        'product': product,
+        'product_info': product,
     }
     return render(request,
                   'shop/product/detail.html',
@@ -28,7 +30,7 @@ def main_catalog(request, category_slug=None):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
     if category_slug is not None:
-        category = get_list_or_404(Category, slug=category_slug)
+        category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category__slug=category_slug)
     context = {
         'category': category,
