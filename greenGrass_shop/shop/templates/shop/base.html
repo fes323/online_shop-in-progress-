@@ -56,13 +56,20 @@
           </div>
           <div class="col-4">
             <div class="head_buttons">
-              <button class="head_button">
-                <a>Корзина</a>
-              </button>
-              <button class="head_button"><a>Заказать</a></button>
-              <a class="head_button_profile" href="#"
-                ><img src="{% static "/img/profile_icon.png" alt="profile_icon"%}"
-              /></a>
+              <form action="{% url 'cart:cart_detail' %}">
+                <button class="head_button">
+                  <div class="cart">
+                    {% with total_items=cart|length %}
+                        {% if cart|length > 0 %}
+                            Корзина: 
+                                {{ cart.get_total_price }} руб.
+                        {% else %}
+                            Корзина пуста.
+                        {% endif %}
+                    {% endwith %}
+                  </div>
+                </button>
+              </form>
             </div>
           </div>
         </div>

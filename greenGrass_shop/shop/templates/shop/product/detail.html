@@ -24,11 +24,19 @@
         <div class="col">
           <p class="product_detail_cart_price"><button class="price_button">Цена: {{ product_info.price }}</button></p>
         </div>
+
         <div class="col">
-          <button class="add_product_button">Добавить в корзину</button>
+
+            <form  action="{% url "cart:cart_add" product_info.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input class="add_product_button" type="submit" value="Добавить">
+            </form>
+
         </div>
       </div>
 
 
     </div>
+
 {% endblock %}

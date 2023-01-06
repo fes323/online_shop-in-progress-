@@ -81,6 +81,12 @@
   text-decoration: underline;
 }
 
+.head_cart_button,
+.head_cart_button:active {
+  color: white;
+  text-decoration: none;
+}
+
 /* body */
 
 .body_home {
