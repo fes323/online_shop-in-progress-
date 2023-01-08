@@ -7,24 +7,6 @@ def main_page(request):
                   'shop/index.html',
                   )
 
-
-# def product_detail(request, id, slug):
-#     product = get_object_or_404(
-#         Product,
-#         id=id,
-#         slug=slug,
-#         available=True,
-#     )
-#
-#     product = Product.objects.get(slug=slug)
-#     context = {
-#         'product_info': product,
-#     }
-#     return render(request,
-#                   'shop/product/detail.html',
-#                   context)
-
-
 def main_catalog(request, category_slug=None):
     category = None
     categories = Category.objects.all()

@@ -4,7 +4,7 @@
     Your shopping cart
 {% endblock %}
 {% block content %}
-<div class="container-xxl ">
+<div class="container-xxl cart_detail">
     <div class="text-center">
     <h1>Список товаров в корзине:</h1>
         <div class="container-fluid">
@@ -48,7 +48,7 @@
         <p class="text-right">
             <a href="{% url "shop:main_catalog" %}" class="button light">Вернуться в каталог</a>
             <a href="{% url "orders:order_create" %}" class="button">
-                Checkout
+                Заказать
             </a>
         </p>
         </div>

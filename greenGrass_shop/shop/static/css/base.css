@@ -273,5 +273,13 @@ li {
 /* product cart  */
 
 .product_detail_cart {
-  padding-top: 100px;
+  padding-top: 150px;
+}
+
+.created {
+    padding-top: 120px;
+}
+
+.cart_detail {
+    padding-top: 150px;
 }
